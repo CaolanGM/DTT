@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Test Application</string>
+    <string name="homeTitle">RSR Rehabilitation service</string>
+    <string name="call">Call RSR now</string>
+    <string name="rsr_pechhulp">RSR roadside assistance</string>
+    <string name="infoTitle">About RSR</string>
+    <string name="cancel">Cancel</string>
+    <string name="cancelCAP">CANCEL</string>
+    <string name="confirmCall">Call now</string>
+    <string name="yourLocation">Your Location:</string>
+    <string name="markerText">Remember this location for the phone call</string>
+    <string name="privacyTitle">Privacy policy</string>
+    <string name="privacyAccept">CONFIRM</string>
+    <string name="privacypart1">To use this app, you must accept the </string>
+    <string name="privacypart2"> Privacy policy</string>
+    <string name="privacypart3"> </string>
+    <string name="popUpTitle">Call costs</string>
+    <string name="popUpText">You pay your usual calling \n costs for this number</string>
+    <string name="info1">With the tools of RSR you remain mobile. RSR is the supplier of resources in the Northeast Netherlands region. Thorough knowledge and years of experience is embedded in our DNA and leads to the best advice.
+    </string>
+    <string name="info2">If you want to know more about our products and services, check out </string>
+    <string name="infoLink">www.rsr.nl</string>
+    <string name="info3"> or visit our showrooms in Silvolde and Nieuwleusen. We are every working day
+    open from 8.00 to 17.00. Here you can take various tools from [robing and quietly what
+    well with your situation. Together with you we look for the tool that suits you. RSR makes people mobile</string>
+    <string name="tabletCall">Contact RSR Nederland</string>
+    <string name="turnon">TURN ON</string>
+    <string name="connectMessage">Your network is turned off. Please turn it on if you want to continue.</string>
+    <string name="connectTitle">No Connection</string>
+
+
+
+</resources>

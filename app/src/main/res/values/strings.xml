@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Test Application</string>
+    <string name="homeTitle">RSR Revalidatieservice</string>
+    <string name="call">Bel RSR nu</string>
+    <string name="rsr_pechhulp">RSR Pechhulp</string>
+    <string name="infoTitle">Over RSR</string>
+    <string name="cancel">Annuleren</string>
+    <string name="cancelCAP">ANNULEREN</string>
+    <string name="confirmCall">Bel nu</string>
+    <string name="yourLocation">Uw Locatie:</string>
+    <string name="markerText">Onthoud deze locatie voor het telefoongesperk</string>
+    <string name="privacyTitle">Privacybeleid</string>
+    <string name="privacyAccept">BEVESTIG</string>
+    <string name="privacypart1">Om deze app te gebruiken, dient u het </string>
+    <string name="privacypart2">privacybeleid</string>
+    <string name="privacypart3"> te accepteren</string>
+    <string name="popUpTitle">Belkosten</string>
+    <string name="popUpText">Voor dit nummer betaalt u uw \n gebruikelijke belskosten</string>
+    <string name="info1">Met de humlpmidden van RSR blijft u mobiel. RSR is dé leverancier van hulpmiddelen
+    in de regio Noordoost-Nederland. Gedegen kennis en jarenlange ervaring zit in ons DNA verweven en
+    leidt tot het beste advies.
+    </string>
+    <string name="info2">Wilt u meer weten over onze producten en diensten, kijk dan op </string>
+    <string name="infoLink">www.rsr.nl</string>
+    <string name="info3"> of bezeok onze showrooms in Silvolde en Nieuwleusen. We zijn iedere werkdag
+    geopend van 8.00 tot 17.00 uur. Hier kunt u diversre hulpmiddeelen uit[roberen en rustig bekijen wat
+    goed bij uw situatie aansluit. Samen met u zoeken we naar het hulpmiddel dat bij u past. RSR maakt mensen mobiel</string>
+    <string name="tabletCall">Neem contact op met RSR Nederland</string>
+    <string name="turnon">AANZETTEN</string>
+    <string name="connectMessage">Uw netwerk is uitgeschalken.   Schakel het alstuiblieft in om door te gaan.</string>
+    <string name="connectTitle">Netwerk is uitgeschakeld</string>
+
+</resources>
