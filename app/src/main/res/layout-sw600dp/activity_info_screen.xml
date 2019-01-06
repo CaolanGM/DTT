@@ -32,13 +32,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="13dp"
             android:layout_centerVertical="true"
-            android:textSize="30dp"
+            android:textSize="@dimen/tabletText"
             android:textColor="@color/white"
-            android:textStyle="bold"
             android:text="@string/infoTitle"/>
         </RelativeLayout>
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".07"
+        android:background="@color/colorPrimaryDark"/>
 
     <ImageView
         android:layout_width="match_parent"
@@ -57,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:textSize="25sp"
+        android:textSize="@dimen/tabletPopUPText"
         android:paddingTop="20sp"
         android:paddingLeft="20sp"
         android:paddingRight="20sp"

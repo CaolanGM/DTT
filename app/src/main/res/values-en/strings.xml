@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app_name">Test Application</string>
+    <string name="app_name">RSR</string>
     <string name="homeTitle">RSR Rehabilitation service</string>
     <string name="call">Call RSR now</string>
     <string name="rsr_pechhulp">RSR roadside assistance</string>

@@ -15,11 +15,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,7 +26,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
+
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -48,19 +45,17 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
         ,ConnectivityReceiver.ConnectivityReceiverListener{
 
 
-    MapView mapView;
-    GoogleMap map;
-    private FusedLocationProviderClient flpc;
+    GoogleMap mMap;
     private Boolean mLocationPermissionsGranted = false;
-    RelativeLayout backButton;
-    RelativeLayout button;
-    RelativeLayout button2;
-    RelativeLayout cancel;
-    LinearLayout popUp;
-    Button tint;
-    LinearLayout connPopUp;
+    RelativeLayout mBackButton;
+    RelativeLayout mPopUpButton;
+    RelativeLayout mCallButton;
+    RelativeLayout mCancel;
+    LinearLayout mPopUp;
+    Button mTint;
+    LinearLayout mConnPopUp;
     TextView turnOn;
-    TextView cancelConn;
+    TextView mCancelConn;
     Activity activity = this;
 
     boolean isConnected = true;
@@ -72,22 +67,23 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map_screen);
         // Get the SupportMapFragment and request notification
         // when the map is ready to be used.
-        checkConnection();
-        if(isConnected){
-        getLocationPermission();}
+//        checkConnection();
+       // if(isConnected){
+        getLocationPermission();
+    //}
 
-        backButton = findViewById(R.id.backBtn);
-        button = findViewById(R.id.button);
-        button2 = findViewById(R.id.button2);
-        cancel = findViewById(R.id.cancel);
-        popUp = findViewById(R.id.popUp);
-        tint = findViewById(R.id.tint);
-        connPopUp = findViewById(R.id.noConn);
-        turnOn = findViewById(R.id.turnOn);
-        cancelConn = findViewById(R.id.cancelConn);
+        mBackButton = findViewById(R.id.backBtn);
+        mPopUpButton = findViewById(R.id.button);
+        mCallButton = findViewById(R.id.button2);
+        mCancel = findViewById(R.id.cancel);
+        mPopUp = findViewById(R.id.popUp);
+        mTint = findViewById(R.id.tint);
+        mConnPopUp = findViewById(R.id.noConn);
+        //turnOn = findViewById(R.id.turnOn);
+        mCancelConn = findViewById(R.id.cancelConn);
 
         //Navigate back to Home Screen
-        backButton.setOnClickListener(new View.OnClickListener() {
+        mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MapScreen.this, HomeScreen.class);
@@ -95,43 +91,45 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
             }
         });
 
-        turnOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-            }
-        });
+        //CONNECTION CODE
 
-        cancelConn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent HomeIntent = new Intent(MapScreen.this,HomeScreen.class);
-                startActivity(HomeIntent);
-            }
-        });
+//        turnOn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+//            }
+//        });
+
+//        cancelConn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent HomeIntent = new Intent(MapScreen.this,HomeScreen.class);
+//                startActivity(HomeIntent);
+//            }
+//        });
         //Open the pop up when the first button is clicked
-        button.setOnClickListener(new View.OnClickListener() {
+        mPopUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popUp.setVisibility(View.VISIBLE);
-                tint.setVisibility(View.VISIBLE);
-                button.setVisibility(View.GONE);
+                mPopUp.setVisibility(View.VISIBLE);
+                mTint.setVisibility(View.VISIBLE);
+                mPopUpButton.setVisibility(View.GONE);
             }
         });
 
         //Close the pop up when the cancel button is clicked
-        cancel.setOnClickListener(new View.OnClickListener() {
+        mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popUp.setVisibility(View.GONE);
-                tint.setVisibility(View.GONE);
-                button.setVisibility(View.VISIBLE);
+                mPopUp.setVisibility(View.GONE);
+                mTint.setVisibility(View.GONE);
+                mPopUpButton.setVisibility(View.VISIBLE);
             }
         });
 
 
 
-        button2.setOnClickListener(new View.OnClickListener() {
+        mCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Checking if the app has permission to call
@@ -166,7 +164,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Log.e("On Map Ready", "here");
-        map = googleMap;
+        mMap = googleMap;
         if (mLocationPermissionsGranted) {
             getDeviceLocation();
 
@@ -222,6 +220,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
                     initMap();
                 }
             }
+            break;
             //CALL REQUEST RESPONSE CODE
             case 1: {
                 if (grantResults.length > 0) {
@@ -237,7 +236,6 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
                         return;
                     }
                     startActivity(intent);
-                    Toast.makeText(activity, "phoneCall", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -245,7 +243,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
 
     //Function to get the Device's location using the Fused Location Provider Client
     private void getDeviceLocation(){
-        flpc = LocationServices.getFusedLocationProviderClient(this);
+        FusedLocationProviderClient flpc = LocationServices.getFusedLocationProviderClient(this);
         try{
             if(mLocationPermissionsGranted){
                 final Task location = flpc.getLastLocation();
@@ -257,9 +255,14 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
                             Location currentLocation = (Location) task.getResult();
                             try {
                                 //moveCamera to device's location
-                                moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()),15f);
+                                if (currentLocation != null) {
+                                    moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()));
+                                }
                             } catch (IOException e) {
                                 e.printStackTrace();
+                            }
+                            catch (NullPointerException e){
+                                Toast.makeText(MapScreen.this, "NO LOCO", Toast.LENGTH_SHORT).show();
                             }
                         }
 
@@ -273,11 +276,11 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
     }
 
     //Function to focus camera on location
-    private void moveCamera(LatLng latLng, float zoom) throws IOException {
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,zoom));
+    private void moveCamera(LatLng latLng) throws IOException {
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) 15.0));
 
         //Use the custom info window created
-        map.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapScreen.this));
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapScreen.this));
 
         //Getting information regarding the address
         Geocoder geocoder;
@@ -286,49 +289,57 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
 
         addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
-        String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-        String city = addresses.get(0).getLocality();
-        String state = addresses.get(0).getAdminArea();
-        String country = addresses.get(0).getCountryName();
-        String postalCode = addresses.get(0).getPostalCode();
-        String knownName = addresses.get(0).getFeatureName(); //
+        if(addresses.size()!=0) {
+            String address = addresses.get(0).getAddressLine(0);
+            String city = addresses.get(0).getLocality();
+            String postalCode = addresses.get(0).getPostalCode();
 
-        //Setting the marker label
-        String labelHeader = getResources().getString(R.string.yourLocation);
-        String labelTxt = getResources().getString(R.string.markerText);
+            //Setting the marker label
+            // String labelHeader = getResources().getString(R.string.yourLocation);
+            String labelTxt = getResources().getString(R.string.markerText);
 
-        //Using custom marker
-        BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker);
-        Marker marker =map.addMarker(new MarkerOptions().icon(icon).position(latLng)
-                .title("\n"+address+" "+city+"\n"+postalCode+"\n\n"+labelTxt));
-        marker.showInfoWindow();
+            //Using custom marker
+            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker);
+            Marker marker = mMap.addMarker(new MarkerOptions().icon(icon).position(latLng)
+                    .title("\n" + address + " " + city + "\n" + postalCode + "\n\n" + labelTxt));
+
+            marker.showInfoWindow();
+        }
+        else
+        {
+            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker);
+            Marker marker = mMap.addMarker(new MarkerOptions().icon(icon).position(latLng)
+                    .title("Cannot calculate address of location"));
+
+            marker.showInfoWindow();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        SplashScreen.getInstance().setConnectivityListener(this);
+        //SplashScreen.getInstance().setConnectivityListener(this);
     }
 
     private void checkConnection() {
          isConnected = ConnectivityReceiver.isConnected();
          if(!isConnected){
-             tint.setVisibility(View.VISIBLE);
-             connPopUp.setVisibility(View.VISIBLE);
+             mTint.setVisibility(View.VISIBLE);
+             mConnPopUp.setVisibility(View.VISIBLE);
          }
     }
     @Override
     public void onNetworkConnectionChanged(boolean connected) {
         isConnected = connected;
         if(isConnected){
-            tint.setVisibility(View.GONE);
-            connPopUp.setVisibility(View.GONE);
+            mTint.setVisibility(View.GONE);
+            mConnPopUp.setVisibility(View.GONE);
             getLocationPermission();
         }
         else{
-            tint.setVisibility(View.VISIBLE);
-            connPopUp.setVisibility(View.VISIBLE);
+            mTint.setVisibility(View.VISIBLE);
+            mConnPopUp.setVisibility(View.VISIBLE);
         }
    }
 

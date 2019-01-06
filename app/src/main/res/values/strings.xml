@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test Application</string>
+    <string name="app_name">RSR</string>
     <string name="homeTitle">RSR Revalidatieservice</string>
     <string name="call">Bel RSR nu</string>
     <string name="rsr_pechhulp">RSR Pechhulp</string>
@@ -29,5 +29,6 @@
     <string name="turnon">AANZETTEN</string>
     <string name="connectMessage">Uw netwerk is uitgeschalken.   Schakel het alstuiblieft in om door te gaan.</string>
     <string name="connectTitle">Netwerk is uitgeschakeld</string>
+    <string name="todo">TODO</string>
 
 </resources>

@@ -29,8 +29,8 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(intent);
 
                     finish();
-                } catch (Exception ignored) {
-                    ignored.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         }, 5000);  // Give a 5 seconds delay.

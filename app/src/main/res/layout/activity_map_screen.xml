@@ -44,14 +44,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:layout_centerVertical="true"
-                android:textSize="23dp"
+                android:textSize="@dimen/mobileText"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:text="@string/rsr_pechhulp"/>
         </RelativeLayout>
 
 
     </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".07"
+            android:background="@color/colorPrimaryDark"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -85,13 +89,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".15"/>
-            <RelativeLayout
-                android:id="@+id/button"
+            <LinearLayout
                 android:background="@color/colorPrimary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.7">
+                android:layout_weight="0.7"
+                android:orientation="vertical">
 
+                <RelativeLayout
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/btnimg"
                     android:layout_width="30dp"
@@ -106,13 +114,18 @@
                     android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="23dp"
+                    android:textSize="@dimen/mobileText"
                     android:textColor="@color/white"
                     android:text="@string/call"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     />
-            </RelativeLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@color/colorPrimaryDark"/>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -161,7 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/mobilePopUpText"
                     android:text="@string/cancel"/>
             </RelativeLayout>
 
@@ -175,7 +188,7 @@
                     android:id="@+id/titletxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="24dp"
+                    android:textSize="@dimen/mobileText"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="30dp"
                     android:text="@string/popUpTitle"
@@ -191,11 +204,10 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
                     android:layout_marginBottom="15dp"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/mobilePopUpText"
                     android:text="@string/popUpText"/>
 
-                <RelativeLayout
-                    android:id="@+id/button2"
+                <LinearLayout
                     android:layout_below="@+id/maintxt"
                     android:background="@color/colorPrimary"
                     android:layout_width="match_parent"
@@ -203,8 +215,13 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                    <RelativeLayout
+                        android:id="@+id/button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
                     <ImageView
                         android:id="@+id/btnimg2"
                         android:layout_width="30dp"
@@ -219,13 +236,19 @@
                         android:layout_centerHorizontal="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="23dp"
+                        android:textSize="@dimen/mobileText"
                         android:textColor="@color/white"
                         android:text="@string/confirmCall"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         />
-                </RelativeLayout>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="@color/colorPrimaryDark"/>
+                </LinearLayout>
 
             </RelativeLayout>
         </RelativeLayout>
@@ -253,7 +276,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="@dimen/mobilePopUpText"
             android:textStyle="bold"
             android:layout_marginBottom="20dp"
             android:text="@string/connectTitle"/>
@@ -263,7 +286,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="@dimen/mobilePopUpText"
             android:text="@string/connectMessage"
             android:layout_marginBottom="20dp"
             />
@@ -278,7 +301,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/darkgreen"
-            android:textSize="18dp"
+            android:textSize="@dimen/mobilePopUpText"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
             android:layout_gravity="right"
@@ -290,7 +313,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
-            android:textSize="18dp"
+            android:textSize="@dimen/mobilePopUpText"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
             android:layout_gravity="right"

@@ -44,14 +44,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
                 android:layout_centerVertical="true"
-                android:textSize="28dp"
+                android:textSize="@dimen/tabletText"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:text="@string/rsr_pechhulp"/>
         </RelativeLayout>
 
 
     </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".07"
+            android:background="@color/colorPrimaryDark"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -106,7 +110,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="23dp"
+                    android:textSize="@dimen/tabletPopUPText"
                     android:textColor="@color/white"
                     android:text="@string/call"
                     android:layout_marginTop="5dp"
@@ -158,7 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:textSize="18dp"
+                    android:textSize="@dimen/tabletPopUPText"
                     android:text="@string/cancel"/>
             </RelativeLayout>
 
@@ -172,7 +176,7 @@
                     android:id="@+id/titletxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="28dp"
+                    android:textSize="@dimen/tabletPopUPText"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="30dp"
                     android:text="@string/tabletCall"
@@ -202,7 +206,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="28dp"
+                        android:textSize="@dimen/tabletPopUPText"
                         android:textColor="@color/white"
                         android:text="0900-7788990"
                         android:layout_marginTop="5dp"
@@ -219,7 +223,7 @@
                     android:layout_marginLeft="35dp"
                     android:layout_marginRight="35dp"
                     android:layout_marginBottom="15dp"
-                    android:textSize="23dp"
+                    android:textSize="@dimen/tabletPopUPText"
                     android:text="@string/popUpText"/>
 
 

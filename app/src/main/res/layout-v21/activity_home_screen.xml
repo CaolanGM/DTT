@@ -27,14 +27,13 @@
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
         android:paddingBottom="20dp"
-        android:orientation="vertical"
-        tools:targetApi="lollipop">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="@dimen/mobilePopUpText"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="20dp"
             android:text="@string/privacyTitle"/>
@@ -44,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="@dimen/mobilePopUpText"
+            android:textSize="18sp"
             android:layout_marginBottom="20dp"
             />
 
@@ -53,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/mobilePopUpText"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
             android:layout_gravity="right"
@@ -76,27 +75,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
             android:layout_centerVertical="true"
-            android:textSize="@dimen/mobileText"
+            android:textSize="23sp"
             android:textColor="@color/white"
-            android:textStyle="bold"
             android:text="@string/homeTitle"
-            tools:ignore="RelativeOverlap"
-            android:layout_marginStart="13dp" />
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:id="@+id/privInfo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:paddingLeft="20dp"
-            android:paddingRight="10dp"
-            android:src="@drawable/main_i"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:paddingStart="20dp"
             android:paddingEnd="10dp"
+            android:src="@drawable/main_i"
             android:contentDescription="@string/todo" />
 
         <RelativeLayout
@@ -104,14 +98,11 @@
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:paddingLeft="20dp"
-            android:paddingRight="10dp"
-            android:src="@drawable/main_i"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:paddingStart="20dp"
-            android:paddingEnd="10dp" />
+            android:paddingEnd="10dp"
+            android:src="@drawable/main_i"/>
     </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -155,19 +146,16 @@
                  android:layout_width="30dp"
                  android:layout_height="30dp"
                  android:src="@drawable/main_btn_warning"
-                 android:layout_alignParentLeft="true"
-                 android:layout_toLeftOf="@+id/btntxt"
-                 android:layout_centerVertical="true"
-                 android:layout_marginLeft="15dp"
-                 android:contentDescription="@string/todo"
                  android:layout_alignParentStart="true"
                  android:layout_toStartOf="@+id/btntxt"
-                 android:layout_marginStart="15dp" />
+                 android:layout_centerVertical="true"
+                 android:layout_marginStart="15dp"
+                 android:contentDescription="@string/todo" />
              <TextView
                  android:id="@+id/btntxt"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:textSize="@dimen/mobileText"
+                 android:textSize="20sp"
                  android:layout_centerHorizontal="true"
                  android:gravity="center_horizontal"
                  android:textColor="@color/white"
