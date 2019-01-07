@@ -18,7 +18,7 @@ public class InfoScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_screen);
 
-        mInfotv = findViewById(R.id.infotv);
+        mInfotv = findViewById(R.id.tv_info);
 
         String part1 = getResources().getString(R.string.info1);
         String part2 = getResources().getString(R.string.info2);

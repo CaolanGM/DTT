@@ -6,14 +6,14 @@
     tools:context="com.example.drcaolangm.testapplication.HomeScreen"
     >
     <Button
-        android:id="@+id/tint"
+        android:id="@+id/btn_tint"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#88000000"/>
 
     <LinearLayout
-        android:id="@+id/popUp"
+        android:id="@+id/ll_popUp"
         android:visibility="gone"
         android:elevation="20dp"
         android:background="@color/white"
@@ -39,7 +39,7 @@
             android:text="@string/privacyTitle"/>
 
         <TextView
-            android:id="@+id/privLinkTxt"
+            android:id="@+id/et_privLinkTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -48,7 +48,7 @@
             />
 
         <TextView
-            android:id="@+id/accept"
+            android:id="@+id/tv_accept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimary"
@@ -66,7 +66,7 @@
         android:layout_weight="10"
         android:orientation="vertical">
     <RelativeLayout
-        android:id="@+id/titlebar"
+        android:id="@+id/rl_titlebar"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -97,7 +97,7 @@
         android:background="@drawable/main_bg">
 
      <LinearLayout
-         android:id="@+id/buttonArea"
+         android:id="@+id/ll_buttonArea"
          android:layout_above="@+id/buttonArea3"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
@@ -113,22 +113,22 @@
              android:layout_weight="0.7"
              android:orientation="vertical">
                 <RelativeLayout
-                    android:id="@+id/button"
+                    android:id="@+id/rl_mapbutton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorPrimary"
                     >
              <ImageView
-                 android:id="@+id/btnimg"
+                 android:id="@+id/iv_btnimg"
                  android:layout_width="40dp"
                  android:layout_height="40dp"
                  android:src="@drawable/main_btn_warning"
                  android:layout_alignParentLeft="true"
-                 android:layout_toLeftOf="@+id/btntxt"
+                 android:layout_toLeftOf="@+id/tv_btntxt"
                  android:layout_centerVertical="true"
                  android:layout_marginLeft="15dp"/>
              <TextView
-                 android:id="@+id/btntxt"
+                 android:id="@+id/tv_btntxt"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:textSize="@dimen/tabletText"
@@ -200,23 +200,23 @@
              android:layout_height="wrap_content"
              android:layout_weight=".15"/>
          <RelativeLayout
-             android:id="@+id/button2"
+             android:id="@+id/rl_callbtn"
              android:background="@color/colorPrimary"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_weight="0.7">
 
              <ImageView
-                 android:id="@+id/privInfo"
+                 android:id="@+id/iv_privInfo"
                  android:layout_width="40dp"
                  android:layout_height="40dp"
                  android:src="@drawable/main_i"                 android:layout_alignParentLeft="true"
-                 android:layout_toLeftOf="@+id/btntxt2"
+                 android:layout_toLeftOf="@+id/tv_callBtnText"
                  android:layout_centerVertical="true"
                  android:layout_marginLeft="15dp"/>
 
              <TextView
-                 android:id="@+id/btntxt2"
+                 android:id="@+id/tv_callBtnText"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:textSize="@dimen/tabletPopUPText"

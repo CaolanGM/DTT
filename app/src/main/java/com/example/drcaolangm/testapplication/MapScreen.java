@@ -22,6 +22,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.drcaolangm.testapplication.model.MapScreenPresenterImp;
+import com.example.drcaolangm.testapplication.presenter.MapScreenPresenter;
+import com.example.drcaolangm.testapplication.view.MapScreenView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,7 +45,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
-        ,ConnectivityReceiver.ConnectivityReceiverListener{
+        , ConnectivityReceiver.ConnectivityReceiverListener, MapScreenView {
 
 
     GoogleMap mMap;
@@ -59,6 +62,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
     Activity activity = this;
 
     boolean isConnected = true;
+    private MapScreenPresenter mapScreenPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,19 +72,20 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
         // Get the SupportMapFragment and request notification
         // when the map is ready to be used.
 //        checkConnection();
-       // if(isConnected){
+        // if(isConnected){
         getLocationPermission();
-    //}
+        //}
 
-        mBackButton = findViewById(R.id.backBtn);
-        mPopUpButton = findViewById(R.id.button);
-        mCallButton = findViewById(R.id.button2);
-        mCancel = findViewById(R.id.cancel);
-        mPopUp = findViewById(R.id.popUp);
-        mTint = findViewById(R.id.tint);
+        mBackButton = findViewById(R.id.rl_backBtn);
+        mPopUpButton = findViewById(R.id.rl_popUpBtn);
+        mCallButton = findViewById(R.id.rl_callbtn);
+        mCancel = findViewById(R.id.rl_cancel);
+        mPopUp = findViewById(R.id.ll_popUp);
+        mTint = findViewById(R.id.btn_tint);
         mConnPopUp = findViewById(R.id.noConn);
         //turnOn = findViewById(R.id.turnOn);
         mCancelConn = findViewById(R.id.cancelConn);
+        mapScreenPresenter = new MapScreenPresenterImp(MapScreen.this);
 
         //Navigate back to Home Screen
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -111,9 +116,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
         mPopUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPopUp.setVisibility(View.VISIBLE);
-                mTint.setVisibility(View.VISIBLE);
-                mPopUpButton.setVisibility(View.GONE);
+                mapScreenPresenter.openPopUp();
             }
         });
 
@@ -121,30 +124,16 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPopUp.setVisibility(View.GONE);
-                mTint.setVisibility(View.GONE);
-                mPopUpButton.setVisibility(View.VISIBLE);
+                mapScreenPresenter.cancelPopUp();
             }
         });
-
 
 
         mCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Checking if the app has permission to call
-                int checkPermission = ContextCompat.checkSelfPermission(activity.getBaseContext(), Manifest.permission.CALL_PHONE);
-                if (checkPermission != PackageManager.PERMISSION_GRANTED) {
-                    //Asking for permission
-                    ActivityCompat.requestPermissions(
-                            activity,
-                            new String[]{Manifest.permission.CALL_PHONE},
-                            1);
-                } else {
-                    //Making call
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+319007788990"));
-                    startActivity(intent);
-                }
+                mapScreenPresenter.checkCallPermission(activity);
             }
         });
 
@@ -242,26 +231,25 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
     }
 
     //Function to get the Device's location using the Fused Location Provider Client
-    private void getDeviceLocation(){
+    private void getDeviceLocation() {
         FusedLocationProviderClient flpc = LocationServices.getFusedLocationProviderClient(this);
-        try{
-            if(mLocationPermissionsGranted){
+        try {
+            if (mLocationPermissionsGranted) {
                 final Task location = flpc.getLastLocation();
                 location.addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Log.e("Found Location", "here");
                             Location currentLocation = (Location) task.getResult();
                             try {
                                 //moveCamera to device's location
                                 if (currentLocation != null) {
-                                    moveCamera(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()));
+                                    moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()));
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();
-                            }
-                            catch (NullPointerException e){
+                            } catch (NullPointerException e) {
                                 Toast.makeText(MapScreen.this, "NO LOCO", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -270,7 +258,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
                 });
             }
 
-        }catch (SecurityException e){
+        } catch (SecurityException e) {
             Log.e("ERROR", "getDeviceLocation: Security Exception");
         }
     }
@@ -283,36 +271,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(MapScreen.this));
 
         //Getting information regarding the address
-        Geocoder geocoder;
-        List<Address> addresses;
-        geocoder = new Geocoder(this, Locale.getDefault());
-
-        addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-
-        if(addresses.size()!=0) {
-            String address = addresses.get(0).getAddressLine(0);
-            String city = addresses.get(0).getLocality();
-            String postalCode = addresses.get(0).getPostalCode();
-
-            //Setting the marker label
-            // String labelHeader = getResources().getString(R.string.yourLocation);
-            String labelTxt = getResources().getString(R.string.markerText);
-
-            //Using custom marker
-            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker);
-            Marker marker = mMap.addMarker(new MarkerOptions().icon(icon).position(latLng)
-                    .title("\n" + address + " " + city + "\n" + postalCode + "\n\n" + labelTxt));
-
-            marker.showInfoWindow();
-        }
-        else
-        {
-            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker);
-            Marker marker = mMap.addMarker(new MarkerOptions().icon(icon).position(latLng)
-                    .title("Cannot calculate address of location"));
-
-            marker.showInfoWindow();
-        }
+        mapScreenPresenter.checkAddress(latLng);
     }
 
     @Override
@@ -323,25 +282,76 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void checkConnection() {
-         isConnected = ConnectivityReceiver.isConnected();
-         if(!isConnected){
-             mTint.setVisibility(View.VISIBLE);
-             mConnPopUp.setVisibility(View.VISIBLE);
-         }
-    }
-    @Override
-    public void onNetworkConnectionChanged(boolean connected) {
-        isConnected = connected;
-        if(isConnected){
-            mTint.setVisibility(View.GONE);
-            mConnPopUp.setVisibility(View.GONE);
-            getLocationPermission();
-        }
-        else{
+        isConnected = ConnectivityReceiver.isConnected();
+        if (!isConnected) {
             mTint.setVisibility(View.VISIBLE);
             mConnPopUp.setVisibility(View.VISIBLE);
         }
-   }
+    }
 
 
+    @Override
+    public void onNetworkConnectionChanged(boolean connected) {
+        isConnected = connected;
+        if (isConnected) {
+            mTint.setVisibility(View.GONE);
+            mConnPopUp.setVisibility(View.GONE);
+            getLocationPermission();
+        } else {
+            mTint.setVisibility(View.VISIBLE);
+            mConnPopUp.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+    @Override
+    public void showAddress(String address, String city, String postalCode, LatLng latLng) {
+        String labelTxt = getResources().getString(R.string.markerText);
+
+        //Using custom marker
+        BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker);
+        Marker marker = mMap.addMarker(new MarkerOptions().icon(icon).position(latLng)
+                .title("\n" + address + " " + city + "\n" + postalCode + "\n\n" + labelTxt));
+
+        marker.showInfoWindow();
+    }
+
+    @Override
+    public void unknownAddress(LatLng latLng) {
+        BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker);
+        Marker marker = mMap.addMarker(new MarkerOptions().icon(icon).position(latLng)
+                .title("Cannot calculate address of location"));
+        marker.showInfoWindow();
+    }
+
+    @Override
+    public void showPopUp() {
+        mPopUp.setVisibility(View.VISIBLE);
+        mTint.setVisibility(View.VISIBLE);
+        mPopUpButton.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void closePopUp() {
+        mPopUp.setVisibility(View.GONE);
+        mTint.setVisibility(View.GONE);
+        mPopUpButton.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void makeCall() {
+        ActivityCompat.requestPermissions(
+                activity,
+                new String[]{Manifest.permission.CALL_PHONE},
+                1);
+    }
+
+    @Override
+    public void callPermission() {
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+319007788990"));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        startActivity(intent);
+    }
 }

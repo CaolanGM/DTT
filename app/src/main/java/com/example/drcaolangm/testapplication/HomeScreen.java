@@ -13,7 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class HomeScreen extends AppCompatActivity {
+import com.example.drcaolangm.testapplication.model.HomeScreenPresenterImp;
+import com.example.drcaolangm.testapplication.presenter.HomeScreenPresenter;
+import com.example.drcaolangm.testapplication.view.HomeScreenView;
+
+public class HomeScreen extends AppCompatActivity implements HomeScreenView {
 
     RelativeLayout mMapButton;
     ImageView mPrivacyInfo;
@@ -22,20 +26,22 @@ public class HomeScreen extends AppCompatActivity {
     Button mTint;
     TextView mAccept;
     TextView mPrivacyLink;
+    private HomeScreenPresenter homeScreenPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        mMapButton = findViewById(R.id.button);
-        mPrivacyInfo = findViewById(R.id.privInfo);
+        mMapButton = findViewById(R.id.rl_mapbutton);
+        mPrivacyInfo = findViewById(R.id.iv_privInfo);
         mInfoButton = findViewById(R.id.button3);
-        mPopUp = findViewById(R.id.popUp);
-        mTint = findViewById(R.id.tint);
-        mAccept = findViewById(R.id.accept);
-        mPrivacyLink = findViewById(R.id.privLinkTxt);
+        mPopUp = findViewById(R.id.ll_popUp);
+        mTint = findViewById(R.id.btn_tint);
+        mAccept = findViewById(R.id.tv_accept);
+        mPrivacyLink = findViewById(R.id.et_privLinkTxt);
 
+        homeScreenPresenter = new HomeScreenPresenterImp(HomeScreen.this);
 
         //Splitting the text into three different Strings so I can use a specific part of the text as the link
 
@@ -64,8 +70,7 @@ public class HomeScreen extends AppCompatActivity {
         mPrivacyInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPopUp.setVisibility(View.VISIBLE);
-                mTint.setVisibility(View.VISIBLE);
+                homeScreenPresenter.openPopUp();
             }
         });
 
@@ -73,8 +78,7 @@ public class HomeScreen extends AppCompatActivity {
         mAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPopUp.setVisibility(View.GONE);
-                mTint.setVisibility(View.GONE);
+                homeScreenPresenter.cancelPopUp();
             }
         });
 
@@ -86,5 +90,18 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void showPopUp() {
+        mPopUp.setVisibility(View.VISIBLE);
+        mTint.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void closePopUp() {
+        mPopUp.setVisibility(View.GONE);
+        mTint.setVisibility(View.GONE);
     }
 }

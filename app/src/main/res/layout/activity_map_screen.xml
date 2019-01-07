@@ -6,7 +6,7 @@
     tools:context="com.example.drcaolangm.testapplication.MapScreen"
     >
     <Button
-        android:id="@+id/tint"
+        android:id="@+id/btn_tint"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,28 +18,28 @@
         android:layout_weight="10"
         android:orientation="vertical">
     <RelativeLayout
-        android:id="@+id/titlebar"
+        android:id="@+id/rl_titlebar"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
         <RelativeLayout
-            android:id="@+id/backBtn"
+            android:id="@+id/rl_backBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
 
             <ImageView
-                android:id="@+id/arrow"
+                android:id="@+id/iv_arrow"
                 android:layout_width="10dp"
                 android:layout_height="match_parent"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:src="@drawable/menu_arrow"/>
             <TextView
-                android:layout_toRightOf="@+id/arrow"
+                android:layout_toRightOf="@+id/iv_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="13dp"
@@ -79,7 +79,7 @@
 
         <LinearLayout
             android:visibility="visible"
-            android:id="@+id/buttonArea"
+            android:id="@+id/ll_buttonArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -97,20 +97,20 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
-                    android:id="@+id/button"
+                    android:id="@+id/rl_popUpBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 <ImageView
-                    android:id="@+id/btnimg"
+                    android:id="@+id/iv_btnimg"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/main_btn_phone"
                     android:layout_alignParentLeft="true"
-                    android:layout_toLeftOf="@+id/btntxt"
+                    android:layout_toLeftOf="@+id/tv_callPopUpText"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"/>
                 <TextView
-                    android:id="@+id/btntxt"
+                    android:id="@+id/tv_callPopUpText"
                     android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
 
     <LinearLayout
 
-        android:id="@+id/popUp"
+        android:id="@+id/ll_popUp"
         android:visibility="gone"
         android:elevation="30dp"
         android:layout_width="match_parent"
@@ -158,19 +158,19 @@
             android:layout_weight=".9"
             >
             <RelativeLayout
-                android:id="@+id/cancel"
+                android:id="@+id/rl_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary">
                 <ImageView
-                    android:id="@+id/cancelimg"
+                    android:id="@+id/iv_cancelimg"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginRight="10dp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/main_btn_close"/>
                 <TextView
-                    android:layout_toRightOf="@+id/cancelimg"
+                    android:layout_toRightOf="@+id/iv_cancelimg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -179,13 +179,13 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_below="@+id/cancel"
+                android:layout_below="@+id/rl_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/green">
 
                 <TextView
-                    android:id="@+id/titletxt"
+                    android:id="@+id/tv_titletxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/mobileText"
@@ -196,8 +196,8 @@
                     android:gravity="center_horizontal"
                     />
                 <TextView
-                    android:id="@+id/maintxt"
-                    android:layout_below="@+id/titletxt"
+                    android:id="@+id/tv_maintxt"
+                    android:layout_below="@+id/tv_titletxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -208,7 +208,7 @@
                     android:text="@string/popUpText"/>
 
                 <LinearLayout
-                    android:layout_below="@+id/maintxt"
+                    android:layout_below="@+id/tv_maintxt"
                     android:background="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="10dp"
@@ -219,7 +219,7 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/button2"
+                        android:id="@+id/rl_callbtn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                     <ImageView
@@ -229,10 +229,10 @@
                         android:src="@drawable/main_btn_phone"
                         android:layout_centerVertical="true"
                         android:layout_alignParentLeft="true"
-                        android:layout_toLeftOf="@+id/btntxt2"
+                        android:layout_toLeftOf="@+id/tv_callBtnText"
                         android:layout_marginLeft="15dp"/>
                     <TextView
-                        android:id="@+id/btntxt2"
+                        android:id="@+id/tv_callBtnText"
                         android:layout_centerHorizontal="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
