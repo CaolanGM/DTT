@@ -1,9 +1,12 @@
-package com.example.drcaolangm.testapplication;
+package com.example.drcaolangm.testapplication.activities;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.drcaolangm.testapplication.tools.ConnectivityReceiver;
+import com.example.drcaolangm.testapplication.R;
 
 public class SplashScreen extends AppCompatActivity {
 

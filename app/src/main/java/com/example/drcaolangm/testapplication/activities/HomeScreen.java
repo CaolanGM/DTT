@@ -1,4 +1,4 @@
-package com.example.drcaolangm.testapplication;
+package com.example.drcaolangm.testapplication.activities;
 
 import android.content.Intent;
 import android.os.Build;
@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.drcaolangm.testapplication.R;
 import com.example.drcaolangm.testapplication.model.HomeScreenPresenterImp;
 import com.example.drcaolangm.testapplication.presenter.HomeScreenPresenter;
 import com.example.drcaolangm.testapplication.view.HomeScreenView;

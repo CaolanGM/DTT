@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+    <!--<string name="unknownLoc">Cannot calculate address of location</string>-->
     <!--<string name="app_name">RSR</string>-->
     <!--<string name="homeTitle">RSR Rehabilitation service</string>-->
     <!--<string name="call">Call RSR now</string>-->

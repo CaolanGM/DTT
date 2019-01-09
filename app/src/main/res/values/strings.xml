@@ -30,5 +30,7 @@
     <string name="connectMessage">Uw netwerk is uitgeschalken.   Schakel het alstuiblieft in om door te gaan.</string>
     <string name="connectTitle">Netwerk is uitgeschakeld</string>
     <string name="todo">TODO</string>
+    <string name="unknownLoc">Kan adres van locatie niet berekenen</string>
+
 
 </resources>

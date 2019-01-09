@@ -30,19 +30,12 @@ import android.os.Looper;
 import android.os.UserHandle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.Display;
 
-import com.example.drcaolangm.testapplication.MapScreen;
-import com.example.drcaolangm.testapplication.R;
 import com.example.drcaolangm.testapplication.presenter.MapScreenPresenter;
 import com.example.drcaolangm.testapplication.view.MapScreenView;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.File;
 import java.io.FileInputStream;

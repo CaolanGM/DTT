@@ -1,4 +1,4 @@
-package com.example.drcaolangm.testapplication;
+package com.example.drcaolangm.testapplication.tools;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import com.example.drcaolangm.testapplication.activities.SplashScreen;
 
 public class ConnectivityReceiver
         extends BroadcastReceiver {

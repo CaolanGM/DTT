@@ -1,14 +1,11 @@
-package com.example.drcaolangm.testapplication;
+package com.example.drcaolangm.testapplication.activities;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -22,6 +19,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.drcaolangm.testapplication.tools.ConnectivityReceiver;
+import com.example.drcaolangm.testapplication.tools.CustomInfoWindowAdapter;
+import com.example.drcaolangm.testapplication.R;
 import com.example.drcaolangm.testapplication.model.MapScreenPresenterImp;
 import com.example.drcaolangm.testapplication.presenter.MapScreenPresenter;
 import com.example.drcaolangm.testapplication.view.MapScreenView;
@@ -41,8 +41,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
         , ConnectivityReceiver.ConnectivityReceiverListener, MapScreenView {
@@ -265,6 +263,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
 
     //Function to focus camera on location
     private void moveCamera(LatLng latLng) throws IOException {
+        Log.e("CAMERA", "MOVE");
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) 15.0));
 
         //Use the custom info window created
@@ -320,7 +319,7 @@ public class MapScreen extends AppCompatActivity implements OnMapReadyCallback
     public void unknownAddress(LatLng latLng) {
         BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.map_marker);
         Marker marker = mMap.addMarker(new MarkerOptions().icon(icon).position(latLng)
-                .title("Cannot calculate address of location"));
+                .title(getResources().getString(R.string.unknownLoc)));
         marker.showInfoWindow();
     }
 

@@ -1,6 +1,5 @@
 package com.example.drcaolangm.testapplication.model;
 
-import com.example.drcaolangm.testapplication.HomeScreen;
 import com.example.drcaolangm.testapplication.presenter.HomeScreenPresenter;
 import com.example.drcaolangm.testapplication.view.HomeScreenView;
 

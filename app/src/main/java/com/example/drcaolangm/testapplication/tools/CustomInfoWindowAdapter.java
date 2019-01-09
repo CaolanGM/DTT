@@ -1,10 +1,11 @@
-package com.example.drcaolangm.testapplication;
+package com.example.drcaolangm.testapplication.tools;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.drcaolangm.testapplication.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
